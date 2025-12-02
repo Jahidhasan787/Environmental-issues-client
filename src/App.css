@@ -8,3 +8,8 @@
  :root{
     font-family: "Inter", sans-serif;
 }
+
+.active{
+   color: blue;
+   text-decoration: underline;
+}

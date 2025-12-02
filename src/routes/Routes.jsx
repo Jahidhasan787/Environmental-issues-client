@@ -6,6 +6,8 @@ import Home from '../pages/Home';
 import AllIssues from '../pages/AllIssues';
 import Register from '../pages/Register';
 import LogIn from '../pages/LogIn';
+import MyIssues from '../pages/MyIssues';
+import MyContribution from '../pages/MyContribution';
 
  export const router =createBrowserRouter([
   {
@@ -31,6 +33,18 @@ import LogIn from '../pages/LogIn';
           path:"/register",
           Component:Register,
         },
+        {
+          path:"myIssues",
+          Component: MyIssues,
+        },
+        {
+          path:'myContribution',
+          Component: MyContribution,
+        },
+        {
+          path:"*",
+          Component:Error,
+        }
         
     ]
      
