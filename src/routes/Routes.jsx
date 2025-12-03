@@ -8,6 +8,9 @@ import Register from '../pages/Register';
 import LogIn from '../pages/LogIn';
 import MyIssues from '../pages/MyIssues';
 import MyContribution from '../pages/MyContribution';
+import AddIssue from '../pages/AddIssue';
+import PrivetRoutes from './PrivetRoutes';
+import IssueDetails from '../pages/IssueDetails';
 
  export const router =createBrowserRouter([
   {
@@ -34,12 +37,20 @@ import MyContribution from '../pages/MyContribution';
           Component:Register,
         },
         {
-          path:"myIssues",
-          Component: MyIssues,
+          path:"/myIssues",
+          element:<PrivetRoutes><MyIssues></MyIssues></PrivetRoutes>
         },
         {
-          path:'myContribution',
-          Component: MyContribution,
+          path:"/addIssues",
+          element:<PrivetRoutes><AddIssue></AddIssue></PrivetRoutes>
+        },
+        {
+          path:'/myContribution',
+          element:<PrivetRoutes><MyContribution></MyContribution></PrivetRoutes>
+        },
+        {
+          path:'/issueDetails/:id',
+          element:<PrivetRoutes><IssueDetails></IssueDetails></PrivetRoutes>
         },
         {
           path:"*",
