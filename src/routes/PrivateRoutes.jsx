@@ -16,7 +16,7 @@ const PrivateRoutes = ({children}) => {
         }
     },[]);
     if(loading){
-        return <span className="loading loading-spinner text-success"></span>
+        return <p className='text-center mt-10'><span className="loading loading-spinner text-success"></span></p> 
     }
 
     if (user){

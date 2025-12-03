@@ -4,7 +4,6 @@ import IssueCard from '../component/IssueCard';
 
 const AllIssues = () => {
     const data = useLoaderData();
-    console.log(data)
     
     return (
         <div className='mt-10'>

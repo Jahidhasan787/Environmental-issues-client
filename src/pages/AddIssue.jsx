@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
+import { toast } from "react-toastify";
 
 const AddIssue = () => {
     const [user,setUser]= useState(null);
@@ -33,8 +34,12 @@ const AddIssue = () => {
         },
         body: JSON.stringify(formData),
     })
-    .then(res=>res.json())
-    .catch(err=>console.log(err))
+    .then(res=>{
+        res.json()
+        toast("Added successfully")
+    })
+    .catch(err=>console.log(err));
+    e.target.reset();
    }     
     
   return (
@@ -53,6 +58,7 @@ const AddIssue = () => {
                   name="title"
                   className="input w-full"
                   placeholder="Title"
+                  required
                 />
                 <label className="label">Category:</label>
                 <select className="select w-full" name="category" id="">
@@ -68,6 +74,7 @@ const AddIssue = () => {
                   name="location"
                   className="input w-full"
                   placeholder="Location"
+                  required
                 />
                 <label className="label">Description:</label>
                 <div className="relative">
@@ -79,6 +86,7 @@ const AddIssue = () => {
                   name="image"
                   className="input w-full"
                   placeholder="https://example.com"
+                  required
                 />
                 <label className="label">Amount:</label>
                 <input

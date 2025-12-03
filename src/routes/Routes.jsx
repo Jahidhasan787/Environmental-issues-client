@@ -51,6 +51,7 @@ import PrivateRoutes from './PrivateRoutes';
         },
         {
           path:'/issueDetails/:id',
+          loader: ({params})=>fetch(`http://localhost:3000/issues/${params.id}`),
           element:<PrivateRoutes><IssueDetails></IssueDetails></PrivateRoutes>
         },
         {
