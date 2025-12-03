@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.init';
 import { Navigate } from 'react-router';
 
-const PrivetRoutes = ({children}) => {
+const PrivateRoutes = ({children}) => {
     const [user,setUser]= useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
@@ -26,4 +26,4 @@ const PrivetRoutes = ({children}) => {
     return <Navigate state={location.pathname} to="/login"></Navigate>
 };
 
-export default PrivetRoutes;
+export default PrivateRoutes;

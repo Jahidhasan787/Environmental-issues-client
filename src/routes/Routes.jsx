@@ -9,8 +9,8 @@ import LogIn from '../pages/LogIn';
 import MyIssues from '../pages/MyIssues';
 import MyContribution from '../pages/MyContribution';
 import AddIssue from '../pages/AddIssue';
-import PrivetRoutes from './PrivetRoutes';
 import IssueDetails from '../pages/IssueDetails';
+import PrivateRoutes from './PrivateRoutes';
 
  export const router =createBrowserRouter([
   {
@@ -26,6 +26,7 @@ import IssueDetails from '../pages/IssueDetails';
         },
         {
           path:"/issues",
+          loader:()=>fetch('http://localhost:3000/issues'),
           Component:AllIssues,
         },
         {
@@ -38,19 +39,19 @@ import IssueDetails from '../pages/IssueDetails';
         },
         {
           path:"/myIssues",
-          element:<PrivetRoutes><MyIssues></MyIssues></PrivetRoutes>
+          element:<PrivateRoutes><MyIssues></MyIssues></PrivateRoutes>
         },
         {
           path:"/addIssues",
-          element:<PrivetRoutes><AddIssue></AddIssue></PrivetRoutes>
+          element:<PrivateRoutes><AddIssue></AddIssue></PrivateRoutes>
         },
         {
           path:'/myContribution',
-          element:<PrivetRoutes><MyContribution></MyContribution></PrivetRoutes>
+          element:<PrivateRoutes><MyContribution></MyContribution></PrivateRoutes>
         },
         {
           path:'/issueDetails/:id',
-          element:<PrivetRoutes><IssueDetails></IssueDetails></PrivetRoutes>
+          element:<PrivateRoutes><IssueDetails></IssueDetails></PrivateRoutes>
         },
         {
           path:"*",
