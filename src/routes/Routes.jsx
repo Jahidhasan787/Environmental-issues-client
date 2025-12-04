@@ -20,7 +20,7 @@ import PrivateRoutes from './PrivateRoutes';
     children:[
         {
             index: true,
-            // loader: ()=>fetch("/app.json"),
+            loader: ()=>fetch("http://localhost:3000/latest-issues"),
             path: "/",
             Component:Home,
         },
