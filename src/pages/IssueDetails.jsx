@@ -7,47 +7,52 @@ import { auth } from "../firebase/firebase.init";
 const IssueDetails = () => {
   const data = useLoaderData();
   const { image, title, description, amount, location, category, date } = data;
-   const [user,setUser]= useState(null);
-      useEffect(()=>{
-              const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
-                  setUser(currentUser);
-              });
-              return ()=>{
-                  unsubscribe();
-              }
-          },[]);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-  const handleSubmit =(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const formData ={
-        title: e.target.title.value,
-        amount: e.target.amount.value,
-        name: e.target.name.value,
-        email: user?.email,
-        phone: e.target.phone.value,
-        address: e.target.address.value,
-        date: e.target.date.value
-    }
-    fetch('http://localhost:3000/contribution',{
-            method:"POST",
-            headers:{
-                'content-type':'application/json'
-            },
-            body: JSON.stringify(formData),
-        })
-        .then(res=>{
-            res.json()
-            toast("Saved Contribution data")
-        })
-        .catch(err=>console.log(err));
-        e.target.reset();
-  }
+    const formData = {
+      title: e.target.title.value,
+      category: e.target.category.value,
+      amount: e.target.amount.value,
+      name: e.target.name.value,
+      email: user?.email,
+      phone: e.target.phone.value,
+      address: e.target.address.value,
+      date: e.target.date.value,
+    };
+    fetch("http://localhost:3000/contribution", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        res.json();
+        toast("Saved Contribution data");
+      })
+      .catch((err) => console.log(err));
+    e.target.reset();
+  };
   return (
     <div>
       <div className="md:w-9/12 mx-auto pb-10 ">
         <div className="text-center font-bold text-2xl py-5">Issue Details</div>
         <div className="flex flex-col md:flex-row gap-5 items-center shadow-sm rounded p-5">
-          <img className="rounded h-[200px] md:h-[400px] w-full md:w-[50%]" src={image} alt="" />
+          <img
+            className="rounded h-[200px] md:h-[400px] w-full md:w-[50%]"
+            src={image}
+            alt=""
+          />
           <div>
             <h2 className="text-2xl font-bold pb-2">{title}</h2>
             <span className="text-red-400 rounded px-2 py-1 outline">
@@ -81,10 +86,28 @@ const IssueDetails = () => {
                             name="title"
                             className="input w-full"
                             placeholder="Title"
+                            defaultValue={title}
                             required
                           />
+                          <label className="label">Category:</label>
+                          <select
+                            className="select w-full"
+                            name="category"
+                            defaultValue={category}
+                            id=""
+                          >
+                            <option value="">Select a Category</option>
+                            <option value="Garbage">Garbage</option>
+                            <option value="Road damage">Road Damage</option>
+                            <option value="Illegal Construction">
+                              Illegal Construction
+                            </option>
+                            <option value="Broken Public Property">
+                              Broken Public Property
+                            </option>
+                          </select>
                           <label className="label">Amount:</label>
-                             <input
+                          <input
                             type="number"
                             name="amount"
                             className="input w-full"
@@ -107,7 +130,7 @@ const IssueDetails = () => {
                             placeholder="Phone No."
                             required
                           />
-                          
+
                           <label className="label">Address:</label>
                           <input
                             type="text"
