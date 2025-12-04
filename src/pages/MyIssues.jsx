@@ -2,6 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 const MyIssues = () => {
   const [user, setUser] = useState(null);
@@ -25,7 +26,19 @@ const MyIssues = () => {
     }
   }, [user]);
 
-
+  const handleDelete = (id) => {
+    fetch(`http://localhost:3000/issues/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        res.json();
+        toast("Added successfully");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="my-10">
@@ -47,8 +60,27 @@ const MyIssues = () => {
               {issue.description}
             </div>
             <div className="flex md:flex-row flex-col justify-end items-center gap-5 w-[30%] ">
-              <Link to={`/update-issue/${issue._id}`}><button className="btn btn-accent">Update</button></Link>
-              <button className="btn btn-error mr-2">Delete</button>
+              <Link to={`/update-issue/${issue._id}`}>
+                <button className="btn btn-accent">Update</button>
+              </Link>
+              <label htmlFor="my_modal_6" className="btn btn-error">
+                Delete
+              </label>
+
+              <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+              <div className="modal" role="dialog">
+                <div className="modal-box">
+                  <h3 className="text-lg font-bold">Hello!</h3>
+                  <p className="py-4">
+                    This modal works with a hidden checkbox!
+                  </p>
+                  <div className="modal-action">
+                     <span onClick={()=>{handleDelete(issue._id)}} className=" btn-error mr-2"><label htmlFor="my_modal_6" className="btn">Delete</label></span>
+                     <Link to={"/issues"}><button className="btn"><label htmlFor="my_modal_6" className="">Back</label></button></Link>
+                    
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
