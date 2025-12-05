@@ -57,9 +57,9 @@ const MyIssues = () => {
               </div>
             </div>
             <div className=" w-[35%] hidden lg:block ">
-                <div className="flex items-center justify-center break-all">
-                   {issue.description} 
-                </div>
+              <div className="flex items-center justify-center break-all">
+                {issue.description}
+              </div>
             </div>
             <div className="flex md:flex-row flex-col justify-end items-center gap-5 w-[20%] lg:w-[30%] ">
               <Link to={`/update-issue/${issue._id}`}>
@@ -73,13 +73,22 @@ const MyIssues = () => {
               <div className="modal" role="dialog">
                 <div className="modal-box">
                   <h3 className="text-lg font-bold">Hello!</h3>
-                  <p className="py-4">
-                    Are you sure you want to delete this?
-                  </p>
+                  <p className="py-4">Are you sure you want to delete this?</p>
                   <div className="modal-action">
-                     <span onClick={()=>{handleDelete(issue._id)}} className=" btn-error mr-2"><label htmlFor="my_modal_6" className="btn">Delete</label></span>
-                     <Link to={"/issues"}><button className="btn"><label htmlFor="my_modal_6" className="">Back</label></button></Link>
-                    
+                    <span
+                      onClick={() => {
+                        handleDelete(issue._id);
+                      }}
+                      className=" btn-error mr-2"
+                    >
+                      <label htmlFor="my_modal_6" className="btn">
+                        Yes
+                      </label>
+                    </span>
+                      <label htmlFor="my_modal_6" className="btn">
+                        back
+                      </label>
+                   
                   </div>
                 </div>
               </div>
