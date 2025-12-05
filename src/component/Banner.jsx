@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-const issuePromise = fetch("http://localhost:3000/issues").then(res=>res.json())
+const issuePromise = fetch("https://environmental-issues-server.vercel.app/issues").then(res=>res.json())
 
 const Banner = () => {
     const data = use(issuePromise)

@@ -21,13 +21,13 @@ import Update from '../component/Update';
     children:[
         {
             index: true,
-            loader: ()=>fetch("http://localhost:3000/latest-issues"),
+            loader: ()=>fetch("https://environmental-issues-server.vercel.app/latest-issues"),
             path: "/",
             Component:Home,
         },
         {
           path:"/issues",
-          loader:()=>fetch('http://localhost:3000/issues'),
+          loader:()=>fetch('https://environmental-issues-server.vercel.app/issues'),
           Component:AllIssues,
         },
         {
@@ -44,7 +44,7 @@ import Update from '../component/Update';
         },
         {
           path:"/update-issue/:id",
-          loader: ({params})=>fetch(`http://localhost:3000/issues/${params.id}`),
+          loader: ({params})=>fetch(`https://environmental-issues-server.vercel.app/issues/${params.id}`),
           element:<PrivateRoutes><Update></Update></PrivateRoutes>
         },
         {
@@ -57,7 +57,7 @@ import Update from '../component/Update';
         },
         {
           path:'/issueDetails/:id',
-          loader: ({params})=>fetch(`http://localhost:3000/issues/${params.id}`),
+          loader: ({params})=>fetch(`https://environmental-issues-server.vercel.app/issues/${params.id}`),
           element:<PrivateRoutes><IssueDetails></IssueDetails></PrivateRoutes>
         },
         {

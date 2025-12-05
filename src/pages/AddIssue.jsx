@@ -27,7 +27,7 @@ const AddIssue = () => {
        date:e.target.date.value
 
     }
-    fetch('http://localhost:3000/issues',{
+    fetch('https://environmental-issues-server.vercel.app/issues',{
         method:"POST",
         headers:{
             'content-type':'application/json'

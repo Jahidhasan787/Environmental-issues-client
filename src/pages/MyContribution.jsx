@@ -17,7 +17,7 @@ const MyContribution = () => {
     
       useEffect(() => {
         if (user) {
-          fetch(`http://localhost:3000/myContribution?email=${user.email}`)
+          fetch(`https://environmental-issues-server.vercel.app/myContribution?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => {
               setIssues(data);

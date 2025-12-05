@@ -18,7 +18,7 @@ const MyIssues = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:3000/myIssues?email=${user.email}`)
+      fetch(`https://environmental-issues-server.vercel.app/myIssues?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setIssues(data);
@@ -27,7 +27,7 @@ const MyIssues = () => {
   }, [user]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/issues/${id}`, {
+    fetch(`https://environmental-issues-server.vercel.app/issues/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

@@ -14,7 +14,7 @@ const Update = () => {
        description:e.target.description.value,
        amount:e.target.amount.value,
     }
-     fetch(`http://localhost:3000/issues/${_id}`,{
+     fetch(`https://environmental-issues-server.vercel.app/issues/${_id}`,{
             method:"PUT",
             headers:{
                 'content-type':'application/json'
