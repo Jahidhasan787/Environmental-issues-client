@@ -35,7 +35,7 @@ const MyContribution = () => {
       {issues.map((issue) => (
         <div key={issue._id}>
           <div className="">
-            <div className="bg-green-100 mb-5 flex justify-between items-center p-5 rounded-xl gap-5">
+            <div className="bg-green-100 mb-5 flex flex-col lg:flex-row  justify-between items-center p-5 rounded-xl gap-5">
                 <h1 className="px-2">Title: {issue.title}</h1>
                 <h1 className="text-red-400 rounded px-2 ">{issue.category}</h1>
                 <h1 className="px-2">Amount: {issue.amount}</h1>

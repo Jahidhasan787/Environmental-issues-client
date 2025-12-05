@@ -48,7 +48,7 @@ const MyIssues = () => {
       {issues.map((issue) => (
         <div key={issue._id}>
           <div className="bg-green-100 mb-5 flex justify-between p-5 rounded-xl gap-5">
-            <div className="flex w-[25%] items-center">
+            <div className="flex w-[60%] lg:w-[25%] items-center">
               <img className="w-20 h-22 rounded-xl" src={issue.image} alt="" />
               <div>
                 <h1 className="px-2">Title: {issue.title}</h1>
@@ -56,10 +56,12 @@ const MyIssues = () => {
                 <h1 className="px-2">Amount: {issue.amount}</h1>
               </div>
             </div>
-            <div className="w-[35%] flex items-center justify-center break-all ">
-              {issue.description}
+            <div className=" w-[35%] hidden lg:block ">
+                <div className="flex items-center justify-center break-all">
+                   {issue.description} 
+                </div>
             </div>
-            <div className="flex md:flex-row flex-col justify-end items-center gap-5 w-[30%] ">
+            <div className="flex md:flex-row flex-col justify-end items-center gap-5 w-[20%] lg:w-[30%] ">
               <Link to={`/update-issue/${issue._id}`}>
                 <button className="btn btn-accent">Update</button>
               </Link>
@@ -72,7 +74,7 @@ const MyIssues = () => {
                 <div className="modal-box">
                   <h3 className="text-lg font-bold">Hello!</h3>
                   <p className="py-4">
-                    This modal works with a hidden checkbox!
+                    Are you sure you want to delete this?
                   </p>
                   <div className="modal-action">
                      <span onClick={()=>{handleDelete(issue._id)}} className=" btn-error mr-2"><label htmlFor="my_modal_6" className="btn">Delete</label></span>
